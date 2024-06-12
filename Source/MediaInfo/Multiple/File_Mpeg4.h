@@ -525,6 +525,7 @@ private :
         bool                    AllForcedSamples;
         bool                    IsImage;
         bool                    tkhd_Found;
+        int32u                  TrackID;
         std::vector<int32u>     CC;
         std::vector<int32u>     CCFor;
         std::vector<int32u>     FallBackTo;
@@ -567,6 +568,7 @@ private :
         #endif //MEDIAINFO_DEMUX
         #if MEDIAINFO_CONFORMANCE
             bool                stss_IsPresent;
+            bool                sbgp_IsPresent;
             std::vector<sgpd_prol_struct> sgpd_prol;
             std::vector<sbgp_struct> sbgp;
             int8u               default_sample_is_non_sync_sample_PresenceAndValue;
@@ -578,7 +580,7 @@ private :
             MI=NULL;
             TimeCode=NULL;
             StreamKind=Stream_Max;
-            StreamPos=0;
+            StreamPos=(size_t)-1;
             hdlr_Type=0x00000000;
             hdlr_SubType=0x00000000;
             hdlr_Manufacturer=0x00000000;
@@ -635,6 +637,7 @@ private :
             #endif //MEDIAINFO_DEMUX
             #if MEDIAINFO_CONFORMANCE
                 stss_IsPresent=false;
+                sbgp_IsPresent=false;
                 default_sample_is_non_sync_sample_PresenceAndValue=0;
                 FirstOutputtedDecodedSample=0;
             #endif
